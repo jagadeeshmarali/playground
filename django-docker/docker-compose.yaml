@@ -5,6 +5,7 @@ services:
     image: postgres:12.1
     volumes:
       - pg_data:/var/lib/postgresql/data
+    container_name: django_db
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
