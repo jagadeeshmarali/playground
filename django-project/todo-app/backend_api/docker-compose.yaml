@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: "db"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    env_file:
+      - environment.env
+
+  backend:
+    build:
+      context: .
+    command: "python manage.py runserver 0.0.0.0:4545"
+    ports:
+      - "4545:4545"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+
+volumes:
+  pg_data:
+    driver: local
