@@ -1,7 +1,8 @@
-from django.conf.urls import url
+from django.urls import path
 from todo import views
 
 urlpatterns=[
-  url('',views.getOverview),
-  url('todo/',views.get_list)
+  path('',views.getOverview,name="OverView"),
+  path('tasks-list/',views.getList,name="List"),
+  
 ]
