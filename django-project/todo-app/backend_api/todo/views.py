@@ -9,10 +9,10 @@ from .serializers import TodoSerializer
 def getOverview(request):
   urls = {
     'List':"/tasks-list/",
-    'Detailed View':"/task/<str:pk>/",
+    'Detailed View':"/task/<str:id>/",
     'Create':"/task-create/",
-    'Update':"/task-update/<str:pk>/",
-    'Delete':"/task-delete/<str:pk>/"
+    'Update':"/task-update/<str:id>/",
+    'Delete':"/task-delete/<str:id>/"
   }
   return Response(urls)
 
@@ -21,5 +21,30 @@ def getOverview(request):
 def getList(request):
   data = Todo.objects.all()
   serializer = TodoSerializer(data, many=True)
-  return Response("hey")
+  return Response(serializer.data)
+
+@api_view(['GET'])
+def getTask(request,id):
+  data = Todo.objects.get(id=id)
+  serializer = TodoSerializer(data, many=False)
+  return Response(serializer.data)
   
+@api_view(['POST'])
+def createTask(request):
+  serializer = TodoSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+  return Response(serializer.data)
+
+@api_view(['POST'])
+def updateTask(request,id):
+  data = Todo.objects.get(id=id)
+  serializer = TodoSerializer(instance=data, data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+  return Response(serializer.data)
+
+@api_view(['DELETE'])
+def deleteTask(request,id):
+  Todo.objects.get(id=id).delete()
+  return Response("Deleted Successfuly")
