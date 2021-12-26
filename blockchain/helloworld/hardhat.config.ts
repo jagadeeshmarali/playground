@@ -1,4 +1,5 @@
 import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-etherscan";
 import { task } from "hardhat/config";
 import * as dotenv from "dotenv";
 dotenv.config({ path: __dirname + '/.env' });
@@ -26,7 +27,14 @@ module.exports = {
     rinkeby: {
       url: process.env.RINKEBY_URL || '',
       accounts: process.env.PRIVATE_KEY != null ? [process.env.PRIVATE_KEY] : [],
-    }
+    },
+
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+
+    apiKey: process.env.ETHERSCAN_API_KEY || ''
   },
   paths: {
     sources: "./contracts",
