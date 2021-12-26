@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "npx hardhat clean",
+    "chain": "npx hardhat node",
+    "deploy": "npx hardhat run --network localhost scripts/deploy.ts",
+    "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/deploy.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
