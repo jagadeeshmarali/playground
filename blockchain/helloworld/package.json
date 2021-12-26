@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "npx hardhat clean",
     "chain": "npx hardhat node",
-    "deploy": "npx hardhat run --network localhost scripts/deploy.ts",
-    "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/deploy.ts",
+    "deploy": "npx hardhat run --network localhost scripts/sample-script.ts",
+    "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/sample-script.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -19,6 +19,7 @@
     "@types/mocha": "^9.0.0",
     "@types/node": "^17.0.4",
     "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.5.2",
     "hardhat": "^2.8.0",

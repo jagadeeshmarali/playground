@@ -1,5 +1,7 @@
 import "@nomiclabs/hardhat-waffle";
 import { task } from "hardhat/config";
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname + '/.env' });
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -19,4 +21,17 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  networks: {
+    hardhat: {},
+    rinkeby: {
+      url: process.env.RINKEBY_URL || '',
+      accounts: process.env.PRIVATE_KEY != null ? [process.env.PRIVATE_KEY] : [],
+    }
+  },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts"
+  }
 };
