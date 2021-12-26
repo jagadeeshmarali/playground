@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center m-3">
+  <div class="card col-4">
+    <div class="card-body">
+
+      <div class="form-group">
+        <label for="message1">Message</label>
+        <input type="text" class="form-control" id="message1" aria-describedby="emailHelp" [(ngModel)]="message"
+          placeholder="Enter Message">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+
+    </div>
+  </div>
+</div>
