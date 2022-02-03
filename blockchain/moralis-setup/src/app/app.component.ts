@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Moralis } from 'moralis';
 
 @Component({
   selector: 'app-root',
