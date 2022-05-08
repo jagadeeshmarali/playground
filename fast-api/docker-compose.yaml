@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: mongo
+    restart: always
+    container_name: mongo_db
+    volumes:
+      - ./data/db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+
+  api:
+    build:
+      context: .
+    command: "uvicorn main:app --proxy-headers --host 0.0.0.0 --port 8000"
+    container_name: fast-api
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
+    env_file:
+      - environment.env
