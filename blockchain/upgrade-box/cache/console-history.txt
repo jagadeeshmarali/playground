@@ -1,0 +1,13 @@
+(await box.retrieve()).toString()
+await box.increment()
+box.increment()
+(await box.retrieve()).toString()
+let box = Boxv2.attach("0xa73188A4ba0bfc765c715F9dA36E3F947F8489a0");
+const Boxv2 = await ethers.getContractFactory("BoxV2");
+(await box.retrieve()).toString()
+(await box.retrieve().toString())
+await box.retrieve().toString()
+box.retrieve().toString()
+let box =  Box.attach("0xa73188A4ba0bfc765c715F9dA36E3F947F8489a0")
+const Box = await ethers.getContractFactory("Box")
+const Box = await ethers.getContractFactory("Box");
