@@ -1,0 +1,11 @@
+type Query {
+getAll: [TODO]
+}
+type Mutation{
+addTask(task:String!):TODO!
+}
+
+type TODO {
+id: ID!
+task:String
+}

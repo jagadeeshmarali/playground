@@ -1,0 +1,21 @@
+generator:
+  users:
+    - name: "Raghav"
+    - name: "Ramu"
+  samples: 100
+  time:
+    startDate: 2021-09-09
+    endDate: 2021-10-09
+  actions:
+    - repeat: 3
+      action: read
+    - repeat: 4
+      action: write
+    - repeat: 5
+      action: copy_dir
+    - repeat: 1
+      action: delete_dir
+  ip_address:
+    - 127.0.0.1
+    - 129.0.0.3
+  storage: "https://storage.com"
