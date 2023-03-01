@@ -1,0 +1,12 @@
+version: '3'
+services:
+  ml-proxy:
+    build: .
+    command: npm run start-dev
+    volumes:
+      - .:/usr/app/
+      # - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
