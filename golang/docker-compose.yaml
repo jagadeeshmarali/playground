@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  backend:
+    image: golang
+    container_name: backend
+    volumes:
+      - ./backend:/go/app
+    command: go run app/main.go
+    ports:
+      - "8080:8080"
+    tty: true
+    depends_on:
+      - db
+  db:
+    image: postgres:12.1
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - environment.env
+volumes:
+  pg_data:
+    driver: local
